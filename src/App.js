@@ -127,7 +127,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <GameContext.Provider value={{cells, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
-        {/* <h1>Heekoooo</h1> */}
+        <h1>Welcome to Cake Walk Tic Tac Toe</h1>
         <Header />
         <Gameboard />
         </GameContext.Provider>
