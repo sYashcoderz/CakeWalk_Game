@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { GameContext } from "../App";
 
 export const Playing = () => {
-    const { currentChar } = useContext(GameContext)
+    const { currentChar, formData } = useContext(GameContext)
     return (
-        <div>Playing now: <span>{currentChar}</span></div>
+        <div>Playing now: <span>{((currentChar == 'X')? `${formData?.firstPlayer}` : `${formData?.secondPlayer}`)}</span></div>
     )
 }
 
@@ -17,10 +17,10 @@ export const End = () => {
 
 export const Winner = () => {
     
-    const { winner } = useContext(GameContext)
+    const { winner, formData, currentChar } = useContext(GameContext)
 
     return (
-        <div>Congratulations <span>{winner}</span>, you WON!</div>
+        <div>Congratulations <span>{winner}</span> <span>{((currentChar == 'X')? `${formData?.firstPlayer}` : `${formData?.secondPlayer}`)}</span>, you WON!</div>
     )
 }
 

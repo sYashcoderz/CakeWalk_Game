@@ -1,5 +1,8 @@
 import Gameboard from './components/Gameboard.jsx'
 import {Header} from './components/Header.jsx';
+import { Activity } from './components/Activity.jsx';
+import Dashboard from './components/Dashboard.jsx';
+
 
 import {React, createContext, useEffect, useState, } from 'react';
  
@@ -10,12 +13,15 @@ function App() {
   const emptyGame = [["", "", ""], ["", "", ""], ["", "", ""]]
   const [cells, setCells] = useState(emptyGame)
   const [winnerCells, setWinnerCells] = useState([[],[],[]])
+  const [fun, setFun] = useState([])
+  const [formData, setFormData] = useState()
 
   const X = "X"
   const O = "O"
   const [currentChar, setCurrentChar] = useState(X);
   const [winner, setWinner] = useState("");
   const [gameOver, setGameOver] = useState(false)
+  const [selectPlayer, setSelectPlayer] = useState(false)
 
   useEffect(function() {
     isGameOver()
@@ -34,7 +40,8 @@ function App() {
     newBoard[row][column] = currentChar
     setCells(newBoard)
     changeChar()
-  }
+    setFun(() => ([...fun, {"row": row,"column": column, "char": currentChar}]))
+  } 
 
   const changeChar = () => {
     if (currentChar == X) {
@@ -49,6 +56,7 @@ function App() {
     setWinner("")
     setGameOver(false)
     setWinnerCells([[],[],[]])
+    setFun([])
   }
 
   function isGameOver() {
@@ -126,14 +134,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GameContext.Provider value={{cells, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
+        <GameContext.Provider value={{cells,fun, setFun, formData, emptyGame, setSelectPlayer, setFormData, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
+        { (!selectPlayer) ? <Dashboard /> :
+        <>
         <h1>Welcome to Cake Walk Tic Tac Toe</h1>
         <Header />
         <Gameboard />
-        </GameContext.Provider>
-
+        <Activity />
         <button className='btn-reset' onClick={() => reset()}>Reset</button>
-
+        </>
+        }
+        </GameContext.Provider>
       </header>
     </div>
   );
