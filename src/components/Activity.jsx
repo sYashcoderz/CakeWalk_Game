@@ -3,17 +3,22 @@ import { GameContext } from "../App";
 
 
 export const Activity = () => {
-    const { currentChar, fun, formData, cells, setCells, setFun } = useContext(GameContext)
+    const { currentChar, fun, formData, cells, setCells, setFun,  setGameOver, setWinner, } = useContext(GameContext)
     const [data, setData] = useState([])
 
+    console.log("Fun ==>>", fun)
     const getInd = (ind) => {
+        let test = [...fun]
         for(let i=ind; i< fun.length; i++) {
-            console.log(i, fun[i])
+            test.pop()
             const {row, column} = fun[i]
             let arr = {...cells}
             arr[row][column] = ""
-            setCells(arr)
+            setCells(arr)    
         }
+        setFun(test)
+        setWinner("")
+        setGameOver(false)
     }
 
     return (

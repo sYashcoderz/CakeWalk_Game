@@ -134,7 +134,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GameContext.Provider value={{cells,fun, setFun, formData, emptyGame, setSelectPlayer, setFormData, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
+        <GameContext.Provider value={{cells, fun, setFun, formData, emptyGame, setSelectPlayer, setFormData, setGameOver, setWinner, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
         { (!selectPlayer) ? <Dashboard /> :
         <>
         <h1>Welcome to Cake Walk Tic Tac Toe</h1>
