@@ -20,7 +20,9 @@ export const Winner = () => {
     const { winner, formData, currentChar } = useContext(GameContext)
 
     return (
-        <div>Congratulations <span>{winner}</span> <span>{((currentChar == 'X')? `${formData?.firstPlayer}` : `${formData?.secondPlayer}`)}</span>, you WON!</div>
+        <div>Congratulations <span>{winner}</span> 
+        {/* <span>{((currentChar == 'X')? `${formData?.firstPlayer}` : `${formData?.secondPlayer}`)}</span>, */}
+         {` you WON!`}</div>
     )
 }
 

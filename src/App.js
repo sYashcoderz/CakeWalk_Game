@@ -137,7 +137,7 @@ function App() {
         <GameContext.Provider value={{cells, fun, setFun, formData, emptyGame, setSelectPlayer, setFormData, setGameOver, setWinner, setCells, onCellClick, currentChar, winner, gameOver, winnerCells}} >
         { (!selectPlayer) ? <Dashboard /> :
         <>
-        <h1>Welcome to Cake Walk Tic Tac Toe</h1>
+        <h1>Welcome to the Game Tic Tac Toe</h1>
         <Header />
         <Gameboard />
         <Activity />
